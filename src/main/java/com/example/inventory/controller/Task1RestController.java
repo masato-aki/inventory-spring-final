@@ -12,15 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.inventory.entity.ItemStock;
 import com.example.inventory.repository.InventoryRepository;
 
-/**
- * ============================================================================
- * 【クラスの役割】問1専用 API Rest Controller (総合受付 / 窓口)
- * ----------------------------------------------------------------------------
- *  React（フロントエンド）からの HTTP リクエストを受け取る「受付窓口」です。
- *  画面から送られてきたパラメータ（組織IDなど）を受け取り、
- *  裏方の Repository（職人）へ処理を依頼して、取得結果を JSON 形式で React へ返します。
- * ============================================================================
- */
+
 // ① CORS（異ポート間通信）の許可設定
 //    origins = "*" だと認証情報エラーになるため、originPatterns = "*" を使用して
 //    React (http://localhost:5173) からのアクセスを安全に許可します。

@@ -89,7 +89,7 @@ public class InventoryService {
         return inventoryRepository.findTask7(orgId, itemId);
     }
     /* ========================================================================
-     * 🟪 【問8用メソッド】品目タイプ条件付き文字結合のビジネスロジック
+     *  【問8用メソッド】品目タイプ条件付き文字結合のビジネスロジック
      * ======================================================================== */
     public List<ItemStock> findTask8(String orgId, String itemIdsStr) {
         return inventoryRepository.findTask8(orgId, itemIdsStr);

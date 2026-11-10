@@ -13,7 +13,10 @@ import com.example.inventory.entity.ItemStock;
 import com.example.inventory.service.InventoryService;
 
 /**
- * 【問3用】複数品目・組織照会 REST コントローラー
+ * 課題3：複数品目・組織照会 APIコントローラー
+ * 
+ * 指定された品目IDリスト（IN句検索）に基づいて対象品目の在庫・組織情報を抽出し、
+ * JSON形式で返却します。
  */
 @CrossOrigin(originPatterns = "*")
 @RestController
@@ -24,7 +27,10 @@ public class Task3RestController {
     private InventoryService inventoryService;
 
     /**
-     * URL例: http://localhost:8081/api/task3/search?itemIds=10005,10008
+     * 複数品目ID指定による品目・組織情報一覧取得
+     *
+     * @param itemIds カンマ区切りの品目ID文字列（例: "10005,10008" / 任意）
+     * @return 該当する品目・組織情報リスト
      */
     @GetMapping("/search")
     public List<ItemStock> search(@RequestParam(name = "itemIds", required = false) String itemIds) {

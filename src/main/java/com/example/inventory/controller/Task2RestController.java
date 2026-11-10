@@ -13,31 +13,30 @@ import com.example.inventory.entity.ItemStock;
 import com.example.inventory.service.InventoryService;
 
 /**
- * ============================================================================
- * 【クラスの役割】問い2専用 API Rest Controller (受付窓口)
- * ----------------------------------------------------------------------------
- *  React（フロントエンド）からの問い2用リクエスト (/api/task2/search) を受け取り、
- *  InventoryService (司令塔) に処理を依頼して JSON 形式で結果を返却します。
- * ============================================================================
+ * 課題2：組織コード・品目コード取得 APIコントローラー
+ * 
+ * フロントエンドからの検索リクエストを受け付け、
+ * 組織IDおよび品目IDに合致する組織情報・品目情報をJSON形式で返却します。
  */
-@CrossOrigin(originPatterns = "*") // ReactからのCORS接続を許可
+@CrossOrigin(originPatterns = "*")
 @RestController
 @RequestMapping("/api/task2")
 public class Task2RestController {
 
     @Autowired
-    private InventoryService inventoryService; // 司令塔(Service)と連携
+    private InventoryService inventoryService;
 
     /**
-     * 【問い2用API】組織IDと品目IDから組織コード＆品目コードを取得する
-     *  URL例: http://localhost:8081/api/task2/search?orgId=43&itemId=10004
+     * 組織ID・品目ID指定によるコード情報一覧取得
+     *
+     * @param orgId 組織ID（任意）
+     * @param itemId 品目ID（任意）
+     * @return 該当する組織コード・品目コードを含むItemStockリスト
      */
     @GetMapping("/search")
     public List<ItemStock> search(
-        @RequestParam(name = "orgId", required = false) String orgId,
-        @RequestParam(name = "itemId", required = false) String itemId
-    ) {
-        // ビジネスロジック層（Service）に処理を委譲
+            @RequestParam(name = "orgId", required = false) String orgId,
+            @RequestParam(name = "itemId", required = false) String itemId) {
         return inventoryService.findTask2(orgId, itemId);
     }
 }
